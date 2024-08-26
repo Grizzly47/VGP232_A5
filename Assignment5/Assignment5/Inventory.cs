@@ -17,12 +17,11 @@ namespace Assignment5
                 return availableSlots;
             }
         }
-
         public int MaxSlots
         {
             get
             {
-                return MaxSlots;
+                return maxSlots;
             }
         }
 
@@ -63,9 +62,10 @@ namespace Assignment5
             {
                 items[result.Key]--;
 
-                if (result.Value <= 0)
+                if (items[result.Key] <= 0)
                 {
                     items.Remove(result.Key);
+                    availableSlots++;
                 }
 
                 found = result.Key;
@@ -99,6 +99,7 @@ namespace Assignment5
                 items.Add(item, 1);
                 availableSlots--;
             }
+
             return true;
         }
 
