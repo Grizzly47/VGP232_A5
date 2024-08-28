@@ -11,14 +11,11 @@ namespace Assignment5
     public class CharacterTest
     {
         private Character character;
-        private int initialHealth;
 
         [SetUp]
         public void SetUp()
         {
-            character = new Character();
-            initialHealth = 100;
-            character.Health = initialHealth;
+            character = new Character("Jim", RaceCategory.Human, 100);
         }
 
         [Test]
@@ -28,7 +25,7 @@ namespace Assignment5
 
             character.TakeDamage(damage);
 
-            Assert.That(character.Health, Is.EqualTo(initialHealth - damage));
+            Assert.That(character.Health, Is.EqualTo(character.MaxHealth - damage));
         }
 
         [Test]
@@ -56,8 +53,9 @@ namespace Assignment5
         [Test]
         public void RestoreHealth_SetsIsAliveToTrue_WhenHealthIsAboveZero()
         {
+            character.IsAlive = false;
             character.Health = 0;
-            var restoreAmount = 5;
+            int restoreAmount = 5;
 
             character.RestoreHealth(restoreAmount);
 
