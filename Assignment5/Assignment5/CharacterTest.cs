@@ -53,8 +53,8 @@ namespace Assignment5
         [Test]
         public void RestoreHealth_SetsIsAliveToTrue_WhenHealthIsAboveZero()
         {
-            character.IsAlive = false;
             character.Health = 0;
+            character.IsAlive = false;
             int restoreAmount = 5;
 
             character.RestoreHealth(restoreAmount);
